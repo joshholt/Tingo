@@ -17,7 +17,7 @@ var handlers   = require('./handlers');
 
 exports.index = function (req) {
   return Response.skin(module.resolve('skins/index.md.html'), {
-      title: "Welcome...",
+      title: "Tingo...",
   });
 };
 
@@ -51,7 +51,7 @@ exports.all = function(req) {
  * @returns {Array}       The Array containing all Tasks in the DB
  */
 exports.tasks = function(req) {
-  return Response.json(model.Task.all() || []);
+  return Response.json(models.Task.all() || []);
 };
 
 /**
@@ -62,7 +62,7 @@ exports.tasks = function(req) {
  * @returns {Array}       The Array containing all Users in the DB
  */
 exports.users = function(req) {
-  return Response.json(model.User.all() || []);
+  return Response.json(models.User.all() || []);
 };
 
 /**
@@ -73,7 +73,7 @@ exports.users = function(req) {
  * @returns {Array}       The Array containing all Projects in the DB
  */
 exports.projects = function(req) {
-  return Response.json(model.Project.all() || []);
+  return Response.json(models.Project.all() || []);
 };
 
 /**
@@ -84,7 +84,7 @@ exports.projects = function(req) {
  * @returns {Array}       The Array containing all Watches in the DB
  */
 exports.watches = function(req) {
-  return Response.json(model.Watch.all() || []);
+  return Response.json(models.Watch.all() || []);
 };
 
 /**
