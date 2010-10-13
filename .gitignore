@@ -1,1 +1,2 @@
 WEB-INF/app/public/static/*
+WEB-INF/appengine-generated/*
