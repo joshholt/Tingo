@@ -3,6 +3,7 @@
 // in case any app module requires this module.
 exports.urls = [
     ['/', './actions'],
+    ['/tasks-server', './actions']
 ];
 
 // Middleware stack as an array of middleware factories. These will be
@@ -14,7 +15,7 @@ exports.middleware = [
     require('ringo/middleware/static').middleware(module.resolve('public')),
     // require('ringo/middleware/responselog').middleware,
     require('ringo/middleware/error').middleware('skins/error.html'),
-    require('ringo/middleware/notfound').middleware('skins/notfound.html'),
+    require('ringo/middleware/notfound').middleware('skins/notfound.html')
 ];
 
 // The JSGI application. This is a function that takes a request object
@@ -24,7 +25,7 @@ exports.app = require('ringo/webapp').handleRequest;
 // Standard skin macros and filters
 exports.macros = [
     require('ringo/skin/macros'),
-    require('ringo/skin/filters'),
+    require('ringo/skin/filters')
 ];
 
 // Default character encoding and MIME type for this app
