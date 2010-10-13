@@ -13,6 +13,7 @@
  */
 var {Response} = require('ringo/webapp/response');
 var models     = require('./model');
+var log = require("ringo/logging").getLogger(module.id);
 
 /**
  * -- Task [CRUD] --
@@ -65,7 +66,24 @@ exports.task = {
 exports.user = {
 
  GET: function(req, id) {
-   return Response.json(models.User.get(id));
+   if (req.params.loginName && req.params.password !== '') {
+     var loginName = req.params.loginName.replace(/\'/g,"").trim();
+     var user = models.User.query().equals('loginName', loginName).select()
+     return Response.json(user);
+   }
+   else if (req.params.loginName && req.params.password === '') {
+     var user = models.User.query().equals('loginName', 'JH2').select()
+     return Response.json(user);
+   }
+   else if (id) {
+     return Response.json(models.User.get(id));
+   }
+   else {
+     return {
+       status: 403,
+       body: ['Not Authorized']
+     };
+   }
  },
 
  POST: function(req, id) {
