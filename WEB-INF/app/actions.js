@@ -21,6 +21,10 @@ exports.index = function (req) {
   });
 };
 
+exports.app = function() {
+  return Response.static('public/static/tasks/en/2f22758c2cbef21a1efbdf06780deb47dffcd729/index.html');
+};
+
 /**
  * -- All Records --
  * This endpoint will return a Hash with an array for
